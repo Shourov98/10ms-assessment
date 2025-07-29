@@ -1,9 +1,15 @@
-import Image from "next/image";
-import Navbar from "./components/Navbar";
+import { getProduct } from '@/lib/api/getProduct';
+import { shapeProduct } from '@/lib/api/shapeProduct';
+import CoursePage from '@/app/components/CoursePage';
 
-export default function Home() {
-  return (
-    <Navbar />
 
-  );
+export default async function Page() {
+  // 1) fetch raw JSON (ISR cache 60 s)
+  const raw = await getProduct('ielts-course');
+
+  // 2) map to tidy view‑model
+  const view = shapeProduct(raw);
+
+  // 3) hand over to client realm
+  return <CoursePage data={view}/>;
 }
