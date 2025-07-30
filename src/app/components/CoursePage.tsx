@@ -7,6 +7,7 @@ import { UiProduct } from '@/types/product';
 import CourseLayout from './layout/CourseLayout';
 import CourseDetails from './details/CourseDetails';
 import CourseSummary from './summary/CourseSummary';
+import CourseBanner from './CourseBanner';
 
 export default function ClientPage({ data }: { data: UiProduct }) {
   // hydrate once
@@ -17,6 +18,7 @@ export default function ClientPage({ data }: { data: UiProduct }) {
   return (
     <>
       <Navbar />
+      <CourseBanner />
       {product && (
         <CourseLayout
           details={<CourseDetails />}

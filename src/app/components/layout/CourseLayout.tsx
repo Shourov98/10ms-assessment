@@ -16,11 +16,15 @@ export default function CourseLayout({
         max-w-screen-2xl
         px-4 md:px-8 xl:px-20 2xl:px-36
         grid gap-6
-        xl:grid-cols-[minmax(0,1fr)_420px]   /* two columns ≥1280 */
+        md:grid-cols-[minmax(0,1fr)_var(--summary)]
+        [@media(max-width:770px)]:grid-cols-1
       "
+      style={{
+        '--summary': 'clamp(252px, 32vw, 420px)'
+      } as React.CSSProperties}
     >
       {details}
-      {summary}
+      <div style={{ width: 'var(--summary)', minWidth: 'var(--summary)', maxWidth: 'var(--summary)' }}>{summary}</div>
     </section>
   );
 }

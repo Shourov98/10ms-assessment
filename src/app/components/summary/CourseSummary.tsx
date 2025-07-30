@@ -36,7 +36,7 @@ export default function CourseSummary() {
     setIdx((i) => (i === gallery.length - 1 ? 0 : i + 1));
 
   return (
-    <aside className="sticky top-20 flex max-w-sm flex-col gap-6 overflow-hidden rounded-md bg-white shadow-lg">
+    <aside className="sticky top-20 mt-20 flex max-w-sm flex-col gap-6 overflow-hidden rounded-md bg-white shadow-lg">
       {/* ────── hero media with arrows ────── */}
       <div className="relative">
         <Image

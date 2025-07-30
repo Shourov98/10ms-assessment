@@ -15,7 +15,7 @@ export default function CourseHeader() {
     <header
       className="
         relative isolate
-        py-14 md:py-20 xl:py-24
+        py-15 md:py-10 xl:py-15
         text-white
       "
     >
@@ -23,7 +23,6 @@ export default function CourseHeader() {
       <div
         className="
           absolute inset-0 -z-10
-          bg-[url('https://cdn.10minuteschool.com/images/ui_%281%29_1716445506383.jpeg')]
           bg-left bg-cover bg-no-repeat
         "
       />
