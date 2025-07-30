@@ -4,15 +4,25 @@ import { useEffect } from 'react';
 import { useProductStore } from '@/lib/store/productStore';
 import Navbar from './Navbar';
 import { UiProduct } from '@/types/product';
+import CourseLayout from './layout/CourseLayout';
+import CourseDetails from './details/CourseDetails';
+import CourseSummary from './summary/CourseSummary';
 
 export default function ClientPage({ data }: { data: UiProduct }) {
   // hydrate once
   const setProduct = useProductStore(s => s.setProduct);
+  const product = useProductStore(s => s.product);
   useEffect(() => setProduct(data), [data, setProduct]);
 
   return (
-    <main>
+    <>
       <Navbar />
-    </main>
+      {product && (
+        <CourseLayout
+          details={<CourseDetails />}
+          summary={<CourseSummary />}
+        />
+      )}
+    </>
   );
 }

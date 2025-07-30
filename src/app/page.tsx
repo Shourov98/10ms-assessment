@@ -9,6 +9,7 @@ export default async function Page() {
 
   // 2) map to tidy view‑model
   const view = shapeProduct(raw);
+  //console.log('Mapped product', view);
 
   // 3) hand over to client realm
   return <CoursePage data={view}/>;

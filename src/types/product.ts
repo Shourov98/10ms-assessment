@@ -29,7 +29,10 @@ export interface Product {
 export interface UiProduct {
   title: string;
   descriptionHtml: string;
-  media: { trailer: Media | null; gallery: Media[] };
+  media: {
+    trailer: Media | null;
+    gallery: { type: 'image' | 'video'; src: string; thumb?: string }[];
+  };
   checklist: ChecklistItem[];
   sections: Record<string, unknown>;
 }

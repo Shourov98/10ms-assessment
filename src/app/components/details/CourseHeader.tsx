@@ -5,7 +5,11 @@ import { useProductStore } from '@/lib/store/productStore';
 import Image from 'next/image';
 
 export default function CourseHeader() {
-  const { title, descriptionHtml } = useProductStore((s) => s.product!)!;
+  const product = useProductStore((s) => s.product);
+  
+  if (!product) return null;
+
+  const { title, descriptionHtml } = product;
 
   return (
     <header

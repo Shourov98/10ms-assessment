@@ -20,6 +20,6 @@ export async function getProduct(slug: string, lang = 'en') {
     console.error('API error', res.status, body.slice(0, 200));
     throw new Error(`API error ${res.status}`);
   }
-  //console.log('API response', res);
+  // console.log('API response', await res.json());
   return (await res.json()).data;           // raw product JSON
 }
