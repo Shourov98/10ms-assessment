@@ -11,7 +11,8 @@ export function shapeProduct(api: Product): UiProduct {
     descriptionHtml: api.description,
     media: {
       trailer: api.media.find((m: Media) => m.resource_type === 'video') ?? null,
-      gallery: api.media.map((m:Media) => ({
+      gallery: api.media.map((m: Media) => ({
+        name: m.name,
         type: m.resource_type,
         src: m.resource_value,
         thumb: m.thumbnail_url || undefined,

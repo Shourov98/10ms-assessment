@@ -1,5 +1,6 @@
 /* slim starter; extend as you render more fields */
 export interface Media {
+  name: string,
   resource_type: 'image' | 'video';
   resource_value: string;
   thumbnail_url?: string;
