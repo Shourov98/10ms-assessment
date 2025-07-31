@@ -3,7 +3,14 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   images: {
-    domains: ['cdn.10minuteschool.com'],
+    remotePatterns: [
+      { protocol: 'https', hostname: 'cdn.10minuteschool.com', pathname: '/**' },
+      {
+        protocol: 'https',
+        hostname: 's3.ap-southeast-1.amazonaws.com',   // ⬅️ add this
+        pathname: '/cdn.10minuteschool.com/**',
+      },
+    ],
   },
 };
 
