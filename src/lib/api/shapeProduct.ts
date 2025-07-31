@@ -23,6 +23,7 @@ export function shapeProduct(api: Product): UiProduct {
       offers: byType.offers?.values[0],
       instructors: byType.instructors?.values,
       features: byType.features?.values,
+      pdf_banner: byType.group_join_engagement?.values[0],
       pointers: byType.pointers?.values,
       about: byType.about?.values,
       testimonials: byType.testimonials?.values,
