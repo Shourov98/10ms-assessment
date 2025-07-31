@@ -5,7 +5,11 @@ import { useProductStore } from '@/lib/store/productStore';
 
 /** full‑width star‑field banner that grows with its content */
 export default function CourseBanner() {
-  const { title, descriptionHtml } = useProductStore((s) => s.product!)!;
+  const product = useProductStore((s) => s.product);
+
+  if (!product) return null;
+
+  const { title, descriptionHtml } = product;
 
   return (
     <section
@@ -18,7 +22,7 @@ export default function CourseBanner() {
         text-white
       "
       style={{
-        height: 'clamp(400px, 25vw, 350px)'
+        height: 'clamp(350px, 25vw, 400px)'
       }}
     >
       {/* Everything inside this container keeps the same
