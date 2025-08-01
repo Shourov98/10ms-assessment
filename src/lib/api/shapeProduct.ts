@@ -28,6 +28,7 @@ export function shapeProduct(api: Product): UiProduct {
       about: byType.about?.values,
       testimonials: byType.testimonials?.values,
       faq: byType.faq?.values,
+      exclusive: byType.feature_explanations?.values,
     },
   };
 }

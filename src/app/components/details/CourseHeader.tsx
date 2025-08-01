@@ -15,7 +15,7 @@ export default function CourseHeader() {
     <header
       className="
         relative isolate
-        py-15 md:py-10 xl:py-15
+        py-15 md:py-15 xl:py-15
         text-white
       "
     >

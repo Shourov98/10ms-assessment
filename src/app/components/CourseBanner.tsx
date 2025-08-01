@@ -22,7 +22,7 @@ export default function CourseBanner() {
         text-white
       "
       style={{
-        height: 'clamp(350px, 25vw, 400px)'
+        height: 'clamp(350px, 25vw, 350px)'
       }}
     >
       {/* Everything inside this container keeps the same
