@@ -1,8 +1,9 @@
+
 import { useProductStore } from '@/lib/store/productStore';
 import CourseHeader from './CourseHeader';
 import InstructorCard from './InstructorCard';
 import FeaturesGrid from './FeaturesGrid';
-import FreePdfBanner from './PdfBanner';
+import FreePdfBanner, { PdfBannerModel } from './PdfBanner';
 import PointersList from './PointersList';
 import AboutAccordion from './AboutAccordion';
 import ExclusiveFeatures from './ExclusiveFeatures';
@@ -22,9 +23,9 @@ export default function CourseDetails() {
 
       <InstructorCard data={instructors[0]} />
       <FeaturesGrid data={features} />
-      <FreePdfBanner data={sections.pdf_banner} />
+      <FreePdfBanner data={sections.pdf_banner as PdfBannerModel} />
       <PointersList data={pointersList} />
-      <AboutAccordion data={sections.about} />
+      <AboutAccordion data={sections.about as any[]} />
       <ExclusiveFeatures />
       <TestimonialCarousel />
 

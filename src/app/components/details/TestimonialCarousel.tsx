@@ -5,14 +5,30 @@ import { useKeenSlider } from 'keen-slider/react';
 import { useState, useRef } from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight, Play } from 'lucide-react';
+
 import { useProductStore } from '@/lib/store/productStore';
 
+// Define the Testimonial type (adjust fields as needed)
+type Testimonial = {
+  id: string;
+  name: string;
+  testimonial: string;
+  video_url?: string;
+  thumb?: string;
+  profile_image?: string;
+  description?: string;
+};
 
+// Utility to get YouTube thumbnail from video URL
+function ytThumb(url: string): string {
+  // Accepts full YouTube URL or just video ID
+  const idMatch = url.match(/[?&]v=([^&#]+)/) || url.match(/youtu\.be\/([^?&#]+)/) || url.match(/^([\w-]{11})$/);
+  const id = idMatch ? idMatch[1] : url;
+  return `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+}
 
 export default function TestimonialCarousel() {
-  const list = useProductStore(
-    (s) => s.product?.sections.testimonials as Testimonial[] | undefined
-  );
+  const list = useProductStore((s: any) => s.product?.sections.testimonials as Testimonial[] | undefined);
   if (!list?.length) return null;
 
   const [playing, setPlaying] = useState<Record<string, boolean>>({});
@@ -60,7 +76,7 @@ export default function TestimonialCarousel() {
 
         {/* slider track */}
         <div ref={setRef} className="keen-slider">
-          {list.map((card) => {
+          {list.map((card: Testimonial) => {
             const isPlaying = playing[card.id] ?? false;
             const thumb =
               card.video_url &&
