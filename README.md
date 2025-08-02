@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# 10ms Assessment – Next.js Course Platform
 
-First, run the development server:
+This project is a modern course platform built with [Next.js](https://nextjs.org), TypeScript, Zustand, and Tailwind CSS. It features responsive layouts, dynamic course content, instructor profiles, testimonials, and more. The codebase is designed for scalability, maintainability, and professional UI/UX.
+
+## Features
+
+- ⚡ Fast, production-ready Next.js app (App Router)
+- 🎨 Responsive design with Tailwind CSS
+- 🗂️ TypeScript for type safety
+- 🗃️ Zustand for state management
+- 🖼️ Optimized images with Next.js Image
+- 📱 Mobile-friendly navigation and layouts
+- 🧑‍🏫 Instructor and testimonial carousels
+- 🐳 Docker support for easy deployment
+
+## Getting Started (Development)
+
+
+Clone the repository and install dependencies:
+
+```bash
+git clone https://github.com/Shourov98/10ms-assessment.git
+cd 10ms-assessment
+npm install
+# or yarn / pnpm / bun
+```
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# or yarn dev / pnpm dev / bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Running with Docker
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Build and run the app in a container:
 
-## Learn More
+```bash
+docker build -t 10ms-assessment .
+docker run -p 3000:3000 10ms-assessment
+```
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+10ms-assessment/
+├── data.json
+├── next-env.d.ts
+├── next.config.ts
+├── package.json
+├── postcss.config.mjs
+├── README.md
+├── tsconfig.json
+├── public/
+│   ├── file.svg
+│   ├── globe.svg
+│   ├── logo-10ms.svg
+│   ├── next.svg
+│   ├── vercel.svg
+│   └── window.svg
+├── src/
+│   ├── app/
+│   │   ├── favicon.ico
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   ├── page.tsx
+│   │   ├── components/
+│   │   │   ├── MobileDrawer.tsx
+│   │   │   ├── Navbar.tsx
+│   │   │   └── ...
+│   ├── lib/
+│   │   ├── api/
+│   │   │   ├── getProduct.ts
+│   │   │   └── shapeProduct.ts
+│   │   └── store/
+│   │       └── productStore.ts
+│   └── types/
+│       └── product.ts
+└── Dockerfile
+```
 
-## Deploy on Vercel
+- `src/app/` – Main app and page components
+- `src/lib/` – API, store, and utility logic
+- `src/types/` – TypeScript interfaces
+- `public/` – Static assets
+- `data.json` – Example API data
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Customization
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Edit `src/app/page.tsx` to change the landing page
+- Update `data.json` to modify course/testimonial data
+- Adjust Tailwind config in `tailwind.config.js` as needed
+
+## Contributing
+
+Contributions are welcome! Please open issues or pull requests for improvements, bug fixes, or new features.
+
+## License
+
+This project is for assessment and educational purposes.
