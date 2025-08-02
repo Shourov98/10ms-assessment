@@ -47,6 +47,7 @@ docker run -p 3000:3000 10ms-assessment
 
 ## Project Structure
 
+
 ```
 10ms-assessment/
 ├── data.json
@@ -56,23 +57,35 @@ docker run -p 3000:3000 10ms-assessment
 ├── postcss.config.mjs
 ├── README.md
 ├── tsconfig.json
+├── Dockerfile
 ├── public/
-│   ├── file.svg
-│   ├── globe.svg
-│   ├── logo-10ms.svg
-│   ├── next.svg
-│   ├── vercel.svg
-│   └── window.svg
+│   └── ... (static assets)
 ├── src/
 │   ├── app/
 │   │   ├── favicon.ico
 │   │   ├── globals.css
 │   │   ├── layout.tsx
 │   │   ├── page.tsx
-│   │   ├── components/
-│   │   │   ├── MobileDrawer.tsx
-│   │   │   ├── Navbar.tsx
-│   │   │   └── ...
+│   │   └── components/
+│   │       ├── CourseBanner.tsx
+│   │       ├── CoursePage.tsx
+│   │       ├── Footer.tsx
+│   │       ├── MobileDrawer.tsx
+│   │       ├── Navbar.tsx
+│   │       ├── details/
+│   │       │   ├── AboutAccordion.tsx
+│   │       │   ├── CourseDetails.tsx
+│   │       │   ├── CourseHeader.tsx
+│   │       │   ├── ExclusiveFeatures.tsx
+│   │       │   ├── FeaturesGrid.tsx
+│   │       │   ├── InstructorCard.tsx
+│   │       │   ├── PdfBanner.tsx
+│   │       │   ├── PointersList.tsx
+│   │       │   └── TestimonialCarousel.tsx
+│   │       ├── layout/
+│   │       │   └── CourseLayout.tsx
+│   │       └── summary/
+│   │           └── CourseSummary.tsx
 │   ├── lib/
 │   │   ├── api/
 │   │   │   ├── getProduct.ts
@@ -81,7 +94,6 @@ docker run -p 3000:3000 10ms-assessment
 │   │       └── productStore.ts
 │   └── types/
 │       └── product.ts
-└── Dockerfile
 ```
 
 - `src/app/` – Main app and page components
