@@ -1,4 +1,3 @@
-// InstructorCard.tsx
 import DOMPurify from 'dompurify';
 import Image from 'next/image';
 
@@ -16,7 +15,6 @@ export default function InstructorCard({
 
   const { name = 'Unknown', image, description = '', short_description = '' } = data;
 
-  // console.log('InstructorCard data', data.image);
 
   return (
     <section>

@@ -12,8 +12,6 @@ export default function CourseLayout({
   return (
     <section
       className="
-        /* ── pull the whole grid up so it covers the banner bottom ── */
-
         mx-auto max-w-screen-2xl
         px-4 md:px-8 xl:px-20 2xl:px-36
         grid gap-6

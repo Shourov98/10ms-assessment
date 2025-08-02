@@ -1,28 +1,27 @@
-// src/components/details/FreePdfBanner.tsx
 'use client';
 
 import Image from 'next/image';
 import Link from 'next/link';
 
 export interface PdfBannerModel {
-  /** background.image, background.primary_color … */
+  
   background: {
     image: string;
     primary_color?: string;
     secondary_color?: string;
   };
-  /** CTA object */
+  /* CTA object */
   cta: {
     text: string;
     clicked_url: string;
     color?: string;
   };
-  /** left-column copy */
+  /* left-column copy */
   title: string;
   description: string;
-  /** right-hand image */
+  /* right-hand image */
   thumbnail: string;
-  /** top-left sticker (optional) */
+  /* top-left sticker */
   top_left_icon_img?: string;
 }
 

@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Play, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useProductStore } from '@/lib/store/productStore';
 
-/* helper for a safe thumbnail */
+
 function srcFor(item: {
   name?: string;
   type: 'image' | 'video';
@@ -28,7 +28,7 @@ export default function CourseSummary() {
 
   const active = gallery[idx];
 
-  /* ----- nav handlers --------------------------------------------------- */
+  // trailer video and image handling
   const prev = () => {
     setIdx((i) => (i === 0 ? gallery.length - 1 : i - 1));
     setPlaying(false);
@@ -44,11 +44,11 @@ export default function CourseSummary() {
             overflow-hidden rounded-md bg-white p-1.5 shadow-lg
             -mt-60"
     >
-      {/* ── hero media ───────────────────────────────────────────────── */}
+      
       <div className="relative">
         {active.type === 'video' ? (
           playing ? (
-            /* playing state → iframe */
+            
             <iframe
               className="aspect-video w-full rounded"
               src={`https://www.youtube.com/embed/${active.src}?autoplay=1&rel=0`}
@@ -103,7 +103,7 @@ export default function CourseSummary() {
         </button>
       </div>
 
-      {/* ── thumbnail strip ─────────────────────────────────────────── */}
+      {/* thumbnail gallery */}
       <div className="flex gap-2 overflow-x-auto px-3 pb-3">
         {gallery.map((item, i) => {
           const thumb = srcFor(item);
@@ -131,7 +131,7 @@ export default function CourseSummary() {
         })}
       </div>
 
-      {/* ── price / CTA / checklist ─────────────────────────────────── */}
+      {/* price / CTA / checklist */}
       <div className="px-4 pb-6">
         <div className="flex items-baseline gap-2">
           <span className="text-2xl font-bold text-emerald-600">৳3850</span>

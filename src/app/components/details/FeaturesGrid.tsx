@@ -1,4 +1,3 @@
-// FeaturesGrid.tsx
 import Image from 'next/image';
 
 export default function FeaturesGrid({ data }: { data: any[] }) {
