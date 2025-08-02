@@ -30,7 +30,6 @@ export default function CourseDetails() {
       <TestimonialCarousel />
 
 
-      {/* ⬇ add later: Checklist, Features, etc. */}
     </div>
   );
 }
