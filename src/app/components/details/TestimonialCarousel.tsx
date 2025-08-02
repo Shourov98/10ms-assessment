@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { ChevronLeft, ChevronRight, Play } from 'lucide-react';
 import { useProductStore } from '@/lib/store/productStore';
 
-/* … Testimonial interface & ytThumb helper stay the same … */
+
 
 export default function TestimonialCarousel() {
   const list = useProductStore(
@@ -30,7 +30,7 @@ export default function TestimonialCarousel() {
     mode: 'free-snap',
   });
 
-  /* ensure ref assignment */
+
   function setRef(node: HTMLDivElement) {
     sliderRef.current = node;
     refCallback(node);
@@ -69,7 +69,7 @@ export default function TestimonialCarousel() {
             return (
               <div
                 key={card.id}
-                className="keen-slider__slide flex flex-col rounded-lg border p-6"
+                className="keen-slider__slide flex flex-col rounded-lg shadow-md shadow-gray-500 p-6"
                 style={{ minHeight: 340 }}
               >
                 {card.video_url ? (

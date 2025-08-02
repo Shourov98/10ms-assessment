@@ -11,7 +11,7 @@ export default function AboutAccordion({ data }: { data: any[] }) {
     <section>
       <h2 className="mb-4 text-xl font-bold">কোর্স সম্পর্কে বিস্তারিত</h2>
 
-      <div className="rounded-md border divide-y">
+      <div className="rounded-md shadow-md shadow-gray-5 divide-y divide-gray-300">
         {data.map((item, i) => (
           <button
             key={item.id}

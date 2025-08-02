@@ -23,7 +23,7 @@ export default function ExclusiveFeatures() {
     <section>
       <h2 className="mb-4 mt-6 text-xl font-bold">কোর্স এক্সক্লুসিভ ফিচার</h2>
 
-      <div className="rounded-md border p-6 flex flex-col gap-10">
+      <div className="rounded-md shadow-md shadow-gray-300 p-6 flex flex-col gap-10">
         {cards.map((card, i) => (
           <div key={card.id} className="grid md:grid-cols-2 gap-6">
             {/* left column: checklist */}
@@ -61,7 +61,7 @@ export default function ExclusiveFeatures() {
 
             {/* divider except for last card */}
             {i < cards.length - 1 && (
-              <div className="col-span-full border-t mt-4" />
+              <div className="col-span-full border-t border-gray-400 mt-4" />
             )}
           </div>
         ))}

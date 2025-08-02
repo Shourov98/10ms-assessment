@@ -4,12 +4,12 @@ export default function PointersList({ data }: { data: any[] }) {
     <section>
       <h2 className="mb-4 text-xl font-bold">কোর্সটি করে যা শিখবেন</h2>
 
-      <ul className="rounded-md border p-6 grid md:grid-cols-2 gap-y-3 gap-x-8">
+      <ul className="rounded-md shadow-md p-6 grid md:grid-cols-2 gap-y-3 gap-x-8">
         {data.map((p) => (
           <li key={p.id} className="flex gap-2">
             <svg
               viewBox="0 0 24 24"
-              className="mt-1 size-4 shrink-0 text-primary"
+              className="mt-1 size-4 shrink-0 text-primary text-green-700"
             >
               <path
                 fill="currentColor"
