@@ -8,6 +8,7 @@ import CourseLayout from './layout/CourseLayout';
 import CourseDetails from './details/CourseDetails';
 import CourseSummary from './summary/CourseSummary';
 import CourseBanner from './CourseBanner';
+import Footer from './Footer';
 
 export default function ClientPage({ data }: { data: UiProduct }) {
   // hydrate once
@@ -25,6 +26,7 @@ export default function ClientPage({ data }: { data: UiProduct }) {
           summary={<CourseSummary />}
         />
       )}
+      <Footer />
     </>
   );
 }
