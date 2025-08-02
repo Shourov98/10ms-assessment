@@ -2,7 +2,8 @@
 # 10ms Assessment – Next.js IELTS Course Page
 
 This project is a modern course platform built with [Next.js](https://nextjs.org), TypeScript, Zustand, and Tailwind CSS. It features responsive layouts, dynamic course content, instructor profiles, testimonials, and more. The codebase is designed for scalability, maintainability, and professional UI/UX.
-Deployed in Vercel : [10ms-assessment] (https://10ms-assessment-phi.vercel.app/)
+
+### Deployed in Vercel : [10ms-assessment] (https://10ms-assessment-phi.vercel.app/)
 
 ## Features
 
