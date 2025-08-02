@@ -16,7 +16,6 @@ export default function CourseDetails() {
   
   const pointersList = Array.isArray(sections.pointers) ? sections.pointers : [];
 
-  console.log(sections.exclusive, 'Exclusive Features');
   return (
     <div className="flex flex-col gap-12 -mt-30">
       <CourseHeader />
