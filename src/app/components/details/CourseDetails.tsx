@@ -23,7 +23,9 @@ export default function CourseDetails() {
 
       <InstructorCard data={instructors[0]} />
       <FeaturesGrid data={features} />
-      <FreePdfBanner data={sections.pdf_banner as PdfBannerModel} />
+      {sections.pdf_banner && typeof sections.pdf_banner === 'object' ? (
+        <FreePdfBanner data={sections.pdf_banner as PdfBannerModel} />
+      ) : null}
       <PointersList data={pointersList} />
       <AboutAccordion data={sections.about as any[]} />
       <ExclusiveFeatures />
