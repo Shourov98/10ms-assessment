@@ -5,85 +5,115 @@ import Image from 'next/image';
 import { Play, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useProductStore } from '@/lib/store/productStore';
 
-/** Build a guaranteed‑non‑empty URL for every gallery item */
+/* helper for a safe thumbnail */
 function srcFor(item: {
-  name?: string; 
+  name?: string;
   type: 'image' | 'video';
   src: string;
   thumb?: string;
 }) {
   if (item.type === 'image') return item.src;
   if (item.type === 'video' && item.thumb) return item.thumb;
-  // fallback to a placeholder if nothing is available
-  console.log(item.name);
   return '/placeholder-16x9.png';
 }
+
 export default function CourseSummary() {
-  /* pull data slice once from Zustand */
   const { media, checklist } = useProductStore((s) => s.product!)!;
-  // Filter out gallery items with name 'sqr_img'
-  const gallery = media.gallery.filter((item: any) => item.name !== 'sqr_img');
 
-  // console.log(gallery)
+  /* filter out square image */
+  const gallery = media.gallery.filter((i: any) => i.name !== 'sqr_img');
 
-  /* carousel state */
   const [idx, setIdx] = useState(0);
+  const [playing, setPlaying] = useState(false); // video play state for current slide
+
   const active = gallery[idx];
 
-  const prev = () =>
+  /* ----- nav handlers --------------------------------------------------- */
+  const prev = () => {
     setIdx((i) => (i === 0 ? gallery.length - 1 : i - 1));
-  const next = () =>
+    setPlaying(false);
+  };
+  const next = () => {
     setIdx((i) => (i === gallery.length - 1 ? 0 : i + 1));
+    setPlaying(false);
+  };
 
   return (
-    <aside className="sticky top-20 mt-20 p-1.5 flex max-w-sm flex-col gap-6 overflow-hidden rounded-md bg-white shadow-lg">
-      {/* ────── hero media with arrows ────── */}
+    <aside className="
+            sticky top-20 flex max-w-sm flex-col gap-6 
+            overflow-hidden rounded-md bg-white p-1.5 shadow-lg
+            -mt-60"
+    >
+      {/* ── hero media ───────────────────────────────────────────────── */}
       <div className="relative">
-        <Image
-          src={srcFor(active)}
-          alt="Course media"
-          width={420}
-          height={236}
-          className="h-auto w-full object-cover"
-          priority
-        />
+        {active.type === 'video' ? (
+          playing ? (
+            /* playing state → iframe */
+            <iframe
+              className="aspect-video w-full rounded"
+              src={`https://www.youtube.com/embed/${active.src}?autoplay=1&rel=0`}
+              allow="autoplay; encrypted-media"
+              allowFullScreen
+            />
+          ) : (
+            /* thumbnail + play button */
+            <div className="relative">
+              <Image
+                src={srcFor(active)}
+                alt="Course trailer thumbnail"
+                width={1280}
+                height={720}
+                className="aspect-video w-full rounded object-cover"
+              />
+              <button
+                onClick={() => setPlaying(true)}
+                aria-label="Play trailer"
+                className="absolute left-1/2 top-1/2 grid size-16 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white/90 backdrop-blur"
+              >
+                <Play className="size-7 text-primary" />
+              </button>
+            </div>
+          )
+        ) : (
+          /* image slide */
+          <Image
+            src={srcFor(active)}
+            alt="Course media"
+            width={1280}
+            height={720}
+            className="aspect-video w-full rounded object-cover"
+            priority
+          />
+        )}
 
         {/* nav arrows */}
         <button
           onClick={prev}
-          aria-label="Previous"
           className="absolute left-0 top-1/2 grid size-8 -translate-y-1/2 place-items-center rounded-full bg-white/80 shadow hover:bg-white"
+          aria-label="Previous"
         >
           <ChevronLeft className="size-4" />
         </button>
         <button
           onClick={next}
-          aria-label="Next"
           className="absolute right-0 top-1/2 grid size-8 -translate-y-1/2 place-items-center rounded-full bg-white/80 shadow hover:bg-white"
+          aria-label="Next"
         >
           <ChevronRight className="size-4" />
         </button>
-
-        {/* play overlay for videos */}
-        {active.type === 'video' && (
-          <button
-            aria-label="Play teaser"
-            className="absolute left-1/2 top-1/2 grid size-16 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white/90 backdrop-blur text-primary"
-          >
-            <Play className="size-7" />
-          </button>
-        )}
       </div>
 
-      {/* ────── thumbnail strip ────── */}
+      {/* ── thumbnail strip ─────────────────────────────────────────── */}
       <div className="flex gap-2 overflow-x-auto px-3 pb-3">
         {gallery.map((item, i) => {
           const thumb = srcFor(item);
-          if (!thumb) return null; // skip bad entry
           return (
             <button
               key={i}
-              onClick={() => setIdx(i)}
+              onClick={() => {
+                setIdx(i);
+                setPlaying(false);
+              }}
               className={`shrink-0 overflow-hidden rounded ring-2 ${
                 i === idx ? 'ring-primary' : 'ring-transparent'
               }`}
@@ -94,21 +124,20 @@ export default function CourseSummary() {
                 alt=""
                 width={48}
                 height={32}
-                className="object-cover w-full h-full"
-                style={{ minWidth: 48, minHeight: 32, maxWidth: 48, maxHeight: 32 }}
+                className="h-full w-full object-cover"
               />
             </button>
           );
         })}
       </div>
 
-      {/* ────── price, CTA, mini‑checklist ────── */}
+      {/* ── price / CTA / checklist ─────────────────────────────────── */}
       <div className="px-4 pb-6">
         <div className="flex items-baseline gap-2">
           <span className="text-2xl font-bold text-emerald-600">৳3850</span>
           <del className="text-sm text-gray-400">৳5000</del>
           <span className="rounded bg-orange-700 px-2 py-0.5 text-xs font-semibold text-white">
-            1150 ৳ ছাড়
+            1150 ৳ ছাড়
           </span>
         </div>
 

@@ -12,19 +12,32 @@ export default function CourseLayout({
   return (
     <section
       className="
-        mx-auto
-        max-w-screen-2xl
+        /* ── pull the whole grid up so it covers the banner bottom ── */
+
+        mx-auto max-w-screen-2xl
         px-4 md:px-8 xl:px-20 2xl:px-36
         grid gap-6
         md:grid-cols-[minmax(0,1fr)_var(--summary)]
         [@media(max-width:770px)]:grid-cols-1
       "
-      style={{
-        '--summary': 'clamp(252px, 32vw, 420px)'
-      } as React.CSSProperties}
+      style={
+        {
+          '--summary': 'clamp(252px, 32vw, 420px)',
+        } as React.CSSProperties
+      }
     >
       {details}
-      <div style={{ width: 'var(--summary)', minWidth: 'var(--summary)', maxWidth: 'var(--summary)' }}>{summary}</div>
+
+      {/* keep the explicit width clamp for the card */}
+      <div
+        style={{
+          width: 'var(--summary)',
+          minWidth: 'var(--summary)',
+          maxWidth: 'var(--summary)',
+        }}
+      >
+        {summary}
+      </div>
     </section>
   );
 }

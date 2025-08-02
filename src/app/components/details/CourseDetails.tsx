@@ -18,7 +18,7 @@ export default function CourseDetails() {
 
   console.log(sections.exclusive, 'Exclusive Features');
   return (
-    <div className="flex flex-col gap-12">
+    <div className="flex flex-col gap-12 -mt-30">
       <CourseHeader />
 
       <InstructorCard data={instructors[0]} />
